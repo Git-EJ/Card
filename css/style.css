@@ -182,7 +182,6 @@ hr, button {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateX(30px);
 }
 .test .fa-circle-check {
   display: none;
