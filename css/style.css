@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend,
+textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+/* =============================== add perso =========================== */
+a {
+  text-decoration: inherit;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  margin: 0;
+  border: 0px solid;
+}
+
+hr, button {
+  border: none;
+}
+
+.cards {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0.8rem;
+}
+.cards .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 70px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 2px 7px 7px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+.cards .card:hover, .cards .card :active {
+  box-shadow: 0 0 14px rgba(255, 121, 218, 0.705), 7px 7px 7px rgba(147, 86, 220, 0.267);
+}
+.cards .card:hover .test,
+.cards .card:hover .card_left,
+.cards .card:hover .fa-circle-check, .cards .card :active .test,
+.cards .card :active .card_left,
+.cards .card :active .fa-circle-check {
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+  transform-origin: right;
+}
+.cards .card:hover .test, .cards .card :active .test {
+  animation-name: test_animation;
+}
+@keyframes test_animation {
+  0% {
+    transform: scaleX(0);
+    width: 0%;
+  }
+  60% {
+    transform: scaleX(1.1);
+    width: 22%;
+  }
+  100% {
+    transform: scaleX(1);
+    width: 20%;
+  }
+}
+.cards .card:hover .card_left, .cards .card :active .card_left {
+  animation-name: card_left_width;
+}
+@keyframes card_left_width {
+  0% {
+    width: 85%;
+  }
+  60% {
+    width: 63%;
+  }
+  100% {
+    width: 65%;
+  }
+}
+.cards .card:hover .fa-circle-check, .cards .card :active .fa-circle-check {
+  display: inline-block;
+  animation-name: icon_rotation;
+  transform-origin: center;
+}
+@keyframes icon_rotation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+.cards .card_left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.3rem 0;
+  width: 85%;
+  height: 100%;
+  padding: 0.8rem 0 0.8rem 0.6rem;
+  white-space: nowrap;
+}
+.cards .card_left_top_dish_name {
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.cards .card_left_bottom_side_dish {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.cards .card_right_dish_price {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0.8rem 1rem 0.8rem 0rem;
+  font-weight: 700;
+}
+
+.test {
+  height: 70px;
+  background: #99E2D0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(30px);
+}
+.test .fa-circle-check {
+  display: none;
+  font-size: 1.9rem;
+  color: #fff;
+}
+
+html, body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  margin: 0 auto;
+  background: red;
+  width: 375px;
+}
+
+header {
+  width: 100%;
+  height: 200px;
+  background: orange;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+main {
+  width: 100%;
+  height: 350px;
+  background: #F7F7F7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  width: 100%;
+  height: 200px;
+  background: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,82 @@
+.cards {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 0.8rem;
+
+
+    .card {
+        @include flex_center;
+        display: flex;
+        align-items: flex-end;  
+        width: 100%;
+        height: 70px;
+        background: $menu_card_bg;
+        border-radius: 15px;
+        box-shadow: $box-shadow;
+        overflow: hidden;
+        
+        &:hover, :active{
+            box-shadow: $box-shadow_gradient;
+            @include hover_animation_card;
+        }
+    }
+    
+    
+    .card_left{
+        @include flex_center_column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0.3rem 0;
+        width:85%;
+        height: 100%;
+        padding: 0.8rem 0 0.8rem 0.6rem;
+
+        white-space: nowrap;
+
+         
+        &_top_dish_name {
+            width:100%;
+            font-size: 1.1rem;
+            font-weight: $font_bold;
+            text-overflow: ellipsis; // ...
+            overflow: hidden;
+        }
+
+        &_bottom_side_dish{
+            width:100%;
+            font-size:0.9rem;
+            font-weight: $font_light;
+            text-overflow: ellipsis; // ...
+            overflow: hidden;
+        }   
+    }   
+
+
+    .card_right_dish_price{
+        width:15%;
+        height: 100%;
+        display:flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding: 0.8rem 1rem 0.8rem 0rem;
+        font-weight: $font_bold;   
+    }
+}
+
+.test{
+    height:70px;
+    background: $tertiary_color;
+    @include flex_center;
+    transform: translateX(30px);
+    
+    
+    .fa-circle-check{
+        display:none;
+        font-size:1.9rem;
+        color:#fff;
+    }
+}

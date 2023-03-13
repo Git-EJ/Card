@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+@import "./scss/reset.scss";
+@import "./scss/variables.scss";
+@import "./scss/display.scss";
+@import "./scss/animations.scss";
+@import "./scss/card.scss";
+
+
+
+
+html, body{
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    margin:0 auto;
+    background:red;
+    width:375px;
+}
+
+header{
+    width: 100%;
+    height: 200px;
+    background: orange;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+}
+
+main{
+    width: 100%;
+    height: 350px;
+    background: $light_bg_color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    width: 100%;
+    height: 200px;
+    background: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
