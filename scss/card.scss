@@ -22,25 +22,8 @@
     &:hover{
         box-shadow: $box-shadow_gradient;
         @include hover_animation_card;
-        // @include hover_animation_checked;
     }
 }
-
-// .card:hover > input[type="checkbox"]:checked{
-//     animation-name: card_width_animation;
-//     animation-duration: 2s;
-
-//     @keyframes card_width_animation {
-//         0%{
-//             max-width: calc(100% - 1.6rem);
-//         }
-
-//         100%{
-//             max-width: 100%;
-//         }
-//     }
-// }
-
 
 .card_left{
     @include flex_center_column;
@@ -79,7 +62,7 @@
     font-weight: $font_bold;
 }
 
-@mixin mixin_test{
+.test{
     position:relative;
     height:70px;
     background: $tertiary_color;
@@ -93,14 +76,12 @@
     }
 }
 
-.test{
-    @include mixin_test;
-}
-
 
 @mixin mixin_test_checked{
     @include flex_center;
+    width:20%;
     background: darken($tertiary_color, 10);
+
     .fa-circle-check{
         @include card_checked;
         @include linear_gradient_icons;
@@ -115,46 +96,29 @@ input[type="checkbox"]
     display: none;
 }
 
-input[type="checkbox"]:checked~label{   //dev bg red when checked
+input[type="checkbox"]:checked~.card .test{
     @include mixin_test_checked;
 }
 
-input[type="checkbox"]:checked~.test{
-   width:20%;
+input[type="checkbox"]:checked~.card .card_left{
+    width:65%;
+}      
+
+
+@mixin cancel_hover{
+    pointer-events: none;
+    box-shadow: none;
+    animation-duration: 0s;
+    animation-fill-mode: none;
+    transform-origin: initial;
 }
 
-input[type="checkbox"]:checked + .card_left{
-    width:65%;
-    pointer-events: none;
-}             
- 
-    
-// @mixin card_pe{
-    
-//     .card{
-//         pointer-events: none;
-//     }
-// }
 
-// input[type="checkbox"],
-// input[type="checkbox"]:checked{
-//     display: none;
-//     opacity:0;
-// }
 
-// input[type="checkbox"]:checked  + .fa-circle-check{
-//     display: inline-block;
-//     @include card_pe;
-// }
+input[type="checkbox"]:checked~.card:hover {
+    @include cancel_hover;
+}  
 
-// input[type="checkbox"]:checked{
-//     @include mixin_test_checked;
-// }
 
-// input[type="checkbox"]:checked + .card{
-//     pointer-events: none;
-// }
 
-// // input[type="checkbox"]:checked  + .card_left{
-// //     width:65%;
-// // }
+
