@@ -22,8 +22,24 @@
     &:hover{
         box-shadow: $box-shadow_gradient;
         @include hover_animation_card;
+        // @include hover_animation_checked;
     }
 }
+
+// .card:hover > input[type="checkbox"]:checked{
+//     animation-name: card_width_animation;
+//     animation-duration: 2s;
+
+//     @keyframes card_width_animation {
+//         0%{
+//             max-width: calc(100% - 1.6rem);
+//         }
+
+//         100%{
+//             max-width: 100%;
+//         }
+//     }
+// }
 
 
 .card_left{
@@ -35,7 +51,6 @@
     height: 100%;
     padding: 0.8rem 0 0.8rem 0.6rem;
     white-space: nowrap;
-    
     
     &_top_dish_name {
         width:100%;
@@ -64,17 +79,15 @@
     font-weight: $font_bold;
 }
 
-
 @mixin mixin_test{
     position:relative;
     height:70px;
     background: $tertiary_color;
     @include flex_center;
     
-    
     .fa-circle-check{
         position: absolute;
-        display:none;
+        display:inline-block;
         font-size:1.9rem;
         color:#fff;
     }
@@ -85,57 +98,63 @@
 }
 
 
-    // @mixin mixin_test_checked{
-
-    //     .card{
-    //         pointer-events: none;
-    //     }
-    //     .test{
-    //     width:20%;
-    //     height:70px;
-    //     background: $tertiary_color;
-    //     @include flex_center;
-    //     transform: scaleX(1);
-    //     }
-        
-    //     .fa-circle-check{
-    //         display: inline-block;
-    //         font-size:1.9rem;
-    //         color:#fff;
-    //     }
-
-    //     .card_left{
-    //         width:65%;
-    //     }
+@mixin mixin_test_checked{
+    @include flex_center;
+    background: darken($tertiary_color, 10);
+    .fa-circle-check{
+        @include card_checked;
+        @include linear_gradient_icons;
+    }
+}
 
 
-    // }
-    
-
-input[type="checkbox"] {
+input[type="checkbox"]
+// ,
+// input[type="checkbox"]:checked   //pkoi ne fonctionne pas?
+{
     display: none;
 }
 
-// input[type="checkbox"]:checked + .fa-circle-check{
+input[type="checkbox"]:checked~label{   //dev bg red when checked
+    @include mixin_test_checked;
+}
+
+input[type="checkbox"]:checked~.test{
+   width:20%;
+}
+
+input[type="checkbox"]:checked + .card_left{
+    width:65%;
+    pointer-events: none;
+}             
+ 
+    
+// @mixin card_pe{
+    
+//     .card{
+//         pointer-events: none;
+//     }
+// }
+
+// input[type="checkbox"],
+// input[type="checkbox"]:checked{
+//     display: none;
+//     opacity:0;
+// }
+
+// input[type="checkbox"]:checked  + .fa-circle-check{
 //     display: inline-block;
+//     @include card_pe;
+// }
+
+// input[type="checkbox"]:checked{
 //     @include mixin_test_checked;
 // }
 
-// .test input[type="checkbox"]:checked {
-//     display: none;
+// input[type="checkbox"]:checked + .card{
+//     pointer-events: none;
 // }
 
-
-
-
-//   input[type="checkbox"]:checked + .card_left {
-//     width: 65%;
-//   }
-
-//   input[type="checkbox"]:checked + .test {
-//     width: 20%;
-//     transform: scaleX(1);
-//   }
-
-
-
+// // input[type="checkbox"]:checked  + .card_left{
+// //     width:65%;
+// // }

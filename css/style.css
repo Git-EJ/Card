@@ -90,7 +90,7 @@ hr, button {
 .card:hover .card_left,
 .card:hover .fa-circle-check,
 .card:hover .card_right_dish_price {
-  animation-duration: 5s;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
   transform-origin: right;
 }
@@ -199,13 +199,49 @@ hr, button {
 }
 .test .fa-circle-check {
   position: absolute;
-  display: none;
+  display: inline-block;
   font-size: 1.9rem;
   color: #fff;
 }
 
 input[type=checkbox] {
   display: none;
+}
+
+input[type=checkbox]:checked ~ label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #71d7be;
+}
+input[type=checkbox]:checked ~ label .fa-circle-check {
+  animation-name: card_checked;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  color: #9356DC;
+  background: linear-gradient(170deg, #FF79DA, #9356DC);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@keyframes card_checked {
+  from {
+    font-size: 1.9rem;
+    transform: scale(0.1) rotateY(0);
+  }
+  to {
+    font-size: 2.5rem;
+    transform: scale(1) rotateY(1080deg);
+  }
+}
+
+input[type=checkbox]:checked ~ .test {
+  width: 20%;
+}
+
+input[type=checkbox]:checked + .card_left {
+  width: 65%;
+  pointer-events: none;
 }
 
 html, body {

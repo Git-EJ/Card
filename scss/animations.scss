@@ -3,10 +3,11 @@
     .card_left,
     .fa-circle-check,
     .card_right_dish_price {
-        animation-duration: 5s;
-        // animation-duration: 2s;
+        // animation-duration: 5s;
+        animation-duration: 2s;
         animation-fill-mode: forwards;
         transform-origin: right;
+
     }   
 
     .card_right_dish_price{
@@ -15,6 +16,10 @@
         @keyframes card_right_dish_price_animation{
             0%{
                 transform: translateX(1.5rem);
+            }
+
+            60%{
+                // transform: translateX(0.6rem); //  1.5rem / 100% = 0.15rem * 10% --> 60% = 0.15rem * 4  (0=100% 1=90% ... 4=60%)
             }
 
             100% {
@@ -34,6 +39,7 @@
             }
             
             60% {
+                // transform: translateX(0.6rem);
                 width: 22%;
             }
             
@@ -44,7 +50,6 @@
             }
         }
     }
-
     
     .card_left {
         animation-name: card_left_width;
@@ -64,8 +69,9 @@
             }
         }
     }
+    
 
-    .fa-circle-check {
+    .fa-circle-check{
         animation-name: icon_rotation;
         display: inline-block;
         transform-origin: center; //50% 50% --> X Y
@@ -85,31 +91,211 @@
 }
 
 
+@mixin card_checked{
+    animation-name: card_checked;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+    @keyframes card_checked {
+        from{
+            font-size: 1.9rem;
+            transform: scale(0.1) rotateY(0);
+        }
+
+        to{
+            font-size:2.5rem;
+            transform: scale(1) rotateY(1080deg);
+        }
+    }
+}
 
 
 
-// .fa-circle-check{
-    //     animation-name: fa-circle-check_translate;
+
+//==============================================================
+
+// @mixin hover_animation_checked {
+//     .test,
+//     .card_left,
+//     .fa-circle-check,
+//     .card_right_dish_price {
+//         animation-duration: 8s;
+//         // animation-duration: 2s;
+//         animation-fill-mode: forwards;
+//         transform-origin: right;
+
+//     }   
+
+//     .card_right_dish_price{
+//         animation-name:card_right_dish_price_animation;
+
+//         @keyframes card_right_dish_price_animation{
+//             0%{
+//                 transform: translateX(1.5rem);
+//             }
+
+//             60%{
+//                 // transform: translateX(0.6rem); //  1.5rem / 100% = 0.15rem * 10% --> 60% = 0.15rem * 4  (0=100% 1=90% ... 4=60%)
+//             }
+
+//             100% {
+//                 transform: translateX(0px);
+//             }
+//         }
+//     }
     
-    //     @keyframes fa-circle-check_translate{
-    //         0%{
-    //             transform: translateX(-20px);
-    //         }
-
-    //         100%{
-    //             transform: translateX(0px);
-    //         }
-    //     }
-    // }
-
-
-    // .card_right_dish_price{
-    //     animation-name: icon_translate;
-
-    //     @keyframes icon_translate{
+//     .test {
+//         animation-name: test_animation;
+        
+//         @keyframes test_animation {
+//             0% {
+//                 transform: translateX(1.5rem);
+//                 width: 0%;
+//                 padding-left:0;
+//             }
             
-    //         0% {
-    //             transform: translateX(4rem);
-    //         } 
-    //     }
-    // }
+//             60% {
+//                 // transform: translateX(0.6rem);
+//                 width: 22%;
+//             }
+            
+//             100% {
+//                 transform: translateX(0px);
+//                 width: 20%;
+//                 padding-left: 0px;
+//             }
+//         }
+//     }
+    
+//     .card_left {
+//         animation-name: card_left_width;
+        
+//         @keyframes card_left_width {
+            
+//             0%{
+//                 width:85%;
+//             }
+            
+//             60%{
+//                 width: calc(100% - (22% + 15%));
+//             }
+            
+//             100%{
+//                 width:65%;
+//             }
+//         }
+//     }
+    
+
+//     .fa-circle-check {
+//         animation-name: icon_rotation;
+//         display: inline-block;
+//         transform-origin: center; //50% 50% --> X Y
+
+//         @keyframes icon_rotation {
+            
+//             0% {
+//                 transform: rotateZ(0deg);
+//             }
+
+
+//             100%{
+//                 transform: rotateZ(360deg);
+//             }
+//         }
+//     }
+// }
+
+
+// //====================================
+// @mixin hover_animation_card_checked {
+//     .test,
+//     .card_left,
+//     .fa-circle-check,
+//     .card_right_dish_price {
+//         animation-duration: 8s;
+//         // animation-duration: 2s;
+//         animation-fill-mode: forwards;
+//         transform-origin: right;
+
+//     }   
+
+//     .card_right_dish_price{
+//         animation-name:card_right_dish_price_animation;
+
+//         @keyframes card_right_dish_price_animation{
+//             0%{
+//                 transform: translateX(1.5rem);
+//             }
+
+//             60%{
+//                 // transform: translateX(0.6rem); //  1.5rem / 100% = 0.15rem * 10% --> 60% = 0.15rem * 4  (0=100% 1=90% ... 4=60%)
+//             }
+
+//             100% {
+//                 transform: translateX(0px);
+//             }
+//         }
+//     }
+    
+//     .test {
+//         animation-name: test_animation;
+        
+//         @keyframes test_animation {
+//             0% {
+//                 transform: translateX(1.5rem);
+//                 width: 0%;
+//                 padding-left:0;
+//             }
+            
+//             60% {
+//                 // transform: translateX(0.6rem);
+//                 width: 22%;
+//             }
+            
+//             100% {
+//                 transform: translateX(0px);
+//                 width: 20%;
+//                 padding-left: 0px;
+//             }
+//         }
+//     }
+    
+//     .card_left {
+//         animation-name: card_left_width;
+        
+//         @keyframes card_left_width {
+            
+//             0%{
+//                 width:85%;
+//             }
+            
+//             60%{
+//                 width: calc(100% - (22% + 15%));
+//             }
+            
+//             100%{
+//                 width:65%;
+//             }
+//         }
+//     }
+    
+
+//     .fa-circle-check {
+//         animation-name: icon_rotation;
+//         display: inline-block;
+//         transform-origin: center; //50% 50% --> X Y
+
+//         @keyframes icon_rotation {
+            
+//             0% {
+//                 transform: rotateZ(0deg);
+//             }
+
+
+//             100%{
+//                 transform: rotateZ(360deg);
+//             }
+//         }
+//     }
+// }
