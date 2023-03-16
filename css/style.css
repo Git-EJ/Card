@@ -71,6 +71,10 @@ hr, button {
   margin: 0 0.8rem;
 }
 
+label {
+  width: 100%;
+}
+
 .card {
   display: flex;
   justify-content: center;
@@ -85,70 +89,6 @@ hr, button {
 }
 .card:hover {
   box-shadow: 0 0 14px rgba(255, 121, 218, 0.705), 7px 7px 7px rgba(147, 86, 220, 0.267);
-}
-.card:hover .test,
-.card:hover .card_left,
-.card:hover .fa-circle-check,
-.card:hover .card_right_dish_price {
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  transform-origin: right;
-}
-.card:hover .card_right_dish_price {
-  animation-name: card_right_dish_price_animation;
-}
-@keyframes card_right_dish_price_animation {
-  0% {
-    transform: translateX(1.5rem);
-  }
-  100% {
-    transform: translateX(0px);
-  }
-}
-.card:hover .test {
-  animation-name: test_animation;
-}
-@keyframes test_animation {
-  0% {
-    transform: translateX(1.5rem);
-    width: 0%;
-    padding-left: 1.5rem;
-  }
-  60% {
-    width: 22%;
-  }
-  100% {
-    transform: translateX(0px);
-    width: 20%;
-    padding-left: 0px;
-  }
-}
-.card:hover .card_left {
-  animation-name: card_left_width;
-}
-@keyframes card_left_width {
-  0% {
-    width: 85%;
-  }
-  60% {
-    width: 63%;
-  }
-  100% {
-    width: 65%;
-  }
-}
-.card:hover .fa-circle-check {
-  animation-name: icon_rotation;
-  display: inline-block;
-  transform-origin: center;
-}
-@keyframes icon_rotation {
-  0% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(360deg);
-  }
 }
 
 .card_left {
@@ -204,17 +144,22 @@ hr, button {
   color: #fff;
 }
 
-input[type=checkbox] {
+.dish_check {
   display: none;
 }
 
-input[type=checkbox]:checked ~ label {
+.dish_check:checked ~ .card .card_left {
+  width: 65%;
+}
+
+.dish_check:checked ~ .card .test {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 20%;
   background: #71d7be;
 }
-input[type=checkbox]:checked ~ label .fa-circle-check {
+.dish_check:checked ~ .card .test .fa-circle-check {
   animation-name: card_checked;
   animation-duration: 1s;
   animation-fill-mode: forwards;
@@ -235,13 +180,69 @@ input[type=checkbox]:checked ~ label .fa-circle-check {
   }
 }
 
-input[type=checkbox]:checked ~ .test {
-  width: 20%;
+.dish_check:not(:checked) ~ .card:hover .test,
+.dish_check:not(:checked) ~ .card:hover .card_left,
+.dish_check:not(:checked) ~ .card:hover .fa-circle-check,
+.dish_check:not(:checked) ~ .card:hover .card_right_dish_price {
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  transform-origin: right;
 }
-
-input[type=checkbox]:checked + .card_left {
-  width: 65%;
-  pointer-events: none;
+.dish_check:not(:checked) ~ .card:hover .card_right_dish_price {
+  animation-name: card_right_dish_price_animation;
+}
+@keyframes card_right_dish_price_animation {
+  0% {
+    transform: translateX(1.5rem);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+.dish_check:not(:checked) ~ .card:hover .test {
+  animation-name: test_animation;
+}
+@keyframes test_animation {
+  0% {
+    transform: translateX(1.5rem);
+    width: 0%;
+    padding-left: 1.5rem;
+  }
+  60% {
+    width: 22%;
+  }
+  100% {
+    transform: translateX(0px);
+    width: 20%;
+    padding-left: 0px;
+  }
+}
+.dish_check:not(:checked) ~ .card:hover .card_left {
+  animation-name: card_left_width;
+}
+@keyframes card_left_width {
+  0% {
+    width: 85%;
+  }
+  60% {
+    width: 63%;
+  }
+  100% {
+    width: 65%;
+  }
+}
+.dish_check:not(:checked) ~ .card:hover .fa-circle-check {
+  animation-name: icon_rotation;
+  display: inline-block;
+  transform-origin: center;
+}
+@keyframes icon_rotation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 
 html, body {

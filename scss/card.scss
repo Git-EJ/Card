@@ -8,7 +8,11 @@
     gap: 1rem;
     margin: 0 0.8rem;
 }    
-    
+
+label{
+    width:100%;
+}
+
 .card {
     @include flex_center;
     align-items: flex-end;  
@@ -21,104 +25,91 @@
     
     &:hover{
         box-shadow: $box-shadow_gradient;
-        @include hover_animation_card;
     }
 }
 
-.card_left{
-    @include flex_center_column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0.3rem 0;
-    width:85%;
-    height: 100%;
-    padding: 0.8rem 0 0.8rem 0.6rem;
-    white-space: nowrap;
+// .dish_check:not(:checked)~.card_left:hover{
+    //      border:2px solid red;
+    //  }
     
-    &_top_dish_name {
-        width:100%;
-        font-size: 1.1rem;
-        font-weight: $font_bold;
-        text-overflow: ellipsis; // ...
-        overflow: hidden;
-    }
-
-    &_bottom_side_dish{
-        width:100%;
-        font-size:0.9rem;
-        font-weight: $font_light;
-        text-overflow: ellipsis; // ...
-        overflow: hidden;
-    }   
-}   
-
-.card_right_dish_price{
-    width:15%;
-    height: 100%;
-    display:flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 0.8rem 1rem 0.8rem 0rem;
-    font-weight: $font_bold;
+    //  .dish_check:checked~.card_left{
+        //      border:2px solid lime;
+        //  }
+        
+        .card_left{
+            @include flex_center_column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 0.3rem 0;
+            width:85%;
+            height: 100%;
+            padding: 0.8rem 0 0.8rem 0.6rem;
+            white-space: nowrap;
+            
+            &_top_dish_name {
+                width:100%;
+                font-size: 1.1rem;
+                font-weight: $font_bold;
+                text-overflow: ellipsis; // ...
+                overflow: hidden;
+            }
+            
+            &_bottom_side_dish{
+                width:100%;
+                font-size:0.9rem;
+                font-weight: $font_light;
+                text-overflow: ellipsis; // ...
+                overflow: hidden;
+            }   
+        }   
+        
+        .card_right_dish_price{
+            width:15%;
+            height: 100%;
+            display:flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding: 0.8rem 1rem 0.8rem 0rem;
+            font-weight: $font_bold;
+        }
+        
+        .test{
+            position:relative;
+            height:70px;
+            background: $tertiary_color;
+            @include flex_center;
+            
+            .fa-circle-check{
+                position: absolute;
+                display:inline-block;
+                font-size:1.9rem;
+                color:#fff;
+            }
+        }
+        
+        .dish_check{
+            display:none;
 }
-
-.test{
-    position:relative;
-    height:70px;
-    background: $tertiary_color;
-    @include flex_center;
-    
-    .fa-circle-check{
-        position: absolute;
-        display:inline-block;
-        font-size:1.9rem;
-        color:#fff;
-    }
-}
-
 
 @mixin mixin_test_checked{
     @include flex_center;
     width:20%;
     background: darken($tertiary_color, 10);
-
+    
     .fa-circle-check{
         @include card_checked;
         @include linear_gradient_icons;
     }
 }
 
-
-input[type="checkbox"]
-// ,
-// input[type="checkbox"]:checked   //pkoi ne fonctionne pas?
-{
-    display: none;
+.dish_check:checked ~.card .card_left{
+    width:65%;
 }
 
-input[type="checkbox"]:checked~.card .test{
+.dish_check:checked ~.card .test{
     @include mixin_test_checked;
 }
 
-input[type="checkbox"]:checked~.card .card_left{
-    width:65%;
-}      
-
-
-@mixin cancel_hover{
-    pointer-events: none;
-    box-shadow: none;
-    animation-duration: 0s;
-    animation-fill-mode: none;
-    transform-origin: initial;
+.dish_check:not(:checked) ~.card:hover{
+    @include hover_animation_card;
 }
-
-
-
-input[type="checkbox"]:checked~.card:hover {
-    @include cancel_hover;
-}  
-
-
-
-
