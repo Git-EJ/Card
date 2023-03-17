@@ -1,4 +1,9 @@
 
+/* Don't need animation.scss - Transition only*/
+
+
+$card_height:70px;
+
 .cards {
     width: 100%;
     height: auto;
@@ -15,9 +20,11 @@ label{
 
 .card {
     @include flex_center;
+    position:relative;
     align-items: flex-end;  
+    justify-content: flex-start; //chgt pour la transition
     width: 100%;
-    height: 70px;
+    height: $card_height;
     background: $menu_card_bg;
     border-radius: 15px;
     box-shadow: $box-shadow;
@@ -26,90 +33,107 @@ label{
     &:hover{
         box-shadow: $box-shadow_gradient;
     }
-}
 
-// .dish_check:not(:checked)~.card_left:hover{
-    //      border:2px solid red;
-    //  }
-    
-    //  .dish_check:checked~.card_left{
-        //      border:2px solid lime;
-        //  }
-        
-        .card_left{
-            @include flex_center_column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            gap: 0.3rem 0;
-            width:85%;
-            height: 100%;
-            padding: 0.8rem 0 0.8rem 0.6rem;
-            white-space: nowrap;
-            
-            &_top_dish_name {
-                width:100%;
-                font-size: 1.1rem;
-                font-weight: $font_bold;
-                text-overflow: ellipsis; // ...
-                overflow: hidden;
-            }
-            
-            &_bottom_side_dish{
-                width:100%;
-                font-size:0.9rem;
-                font-weight: $font_light;
-                text-overflow: ellipsis; // ...
-                overflow: hidden;
-            }   
-        }   
-        
-        .card_right_dish_price{
-            width:15%;
-            height: 100%;
-            display:flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-            padding: 0.8rem 1rem 0.8rem 0rem;
-            font-weight: $font_bold;
-        }
-        
-        .test{
-            position:relative;
-            height:70px;
-            background: $tertiary_color;
-            @include flex_center;
-            
-            .fa-circle-check{
-                position: absolute;
-                display:inline-block;
-                font-size:1.9rem;
-                color:#fff;
-            }
-        }
-        
-        .dish_check{
-            display:none;
-}
+    &:hover .card_left{
+        width:65%; 
+    }
 
-@mixin mixin_test_checked{
-    @include flex_center;
-    width:20%;
-    background: darken($tertiary_color, 10);
-    
-    .fa-circle-check{
-        @include card_checked;
-        @include linear_gradient_icons;
+    &:hover .test{
+        transform: translateX(-$card_height);
+    }
+
+    &:hover .fa-circle-check{
+        transform: rotateZ(360deg);
     }
 }
 
-.dish_check:checked ~.card .card_left{
-    width:65%;
+.dish_check{
+    display:none;
 }
 
-.dish_check:checked ~.card .test{
-    @include mixin_test_checked;
+.dish_check:checked~.card .card_left{
+    width:65%
 }
 
-.dish_check:not(:checked) ~.card:hover{
-    @include hover_animation_card;
+.dish_check:checked~.card .test{
+    transform: translateX(-$card_height);
+    background: darken($tertiary_color, 10);
 }
+
+.dish_check:checked~.card .fa-circle-check{
+    @include card_checked;
+    @include linear_gradient_icons;
+    transform: rotateZ(360deg);
+    left:calc(($card_height - 45px) / 2);
+    width:45px;
+    height:45px;
+ }
+
+// .dish_check:not(:checked)~.card .card_left:hover{
+//      border:2px solid red;
+//  }
+
+//  .dish_check:checked~.card .card_left:hover{
+//      border:2px solid lime;
+//  }
+
+.card_left{
+    @include flex_center_column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.3rem 0;
+    width:85%;
+    height: 100%;
+    padding: 0.8rem 0 0.8rem 0.6rem;
+    white-space: nowrap;
+    transition: width 2s cubic-bezier(0.2, 0.5, 0.3, 1.5); // si dans le &:hover pas de retour fluide
+
+        &_top_dish_name {
+        width:100%;
+        font-size: 1.1rem;
+        font-weight: $font_bold;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        }
+
+        &_bottom_side_dish{
+        width:100%;
+        font-size:0.9rem;
+        font-weight: $font_light;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        }   
+}   
+
+.card_right_dish_price{
+    width:15%;
+    height: 100%;
+    display:flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0.8rem 1rem 0.8rem 0rem;
+    font-weight: $font_bold;
+}
+
+.test{
+    position:absolute;
+    width:100px;
+    height:$card_height;
+    right:-100px;
+    background: $tertiary_color;
+    @include flex_center;
+    transition: transform 2s cubic-bezier(0.2, 0.5, 0.3, 1.5); 
+
+    .fa-circle-check{
+        @include flex_center;
+        position: absolute;
+        width:31px;
+        height:31px;
+        left:calc(($card_height - 31px) / 2);
+        font-size:1.9rem;
+        color:#fff;
+        transition: transform 2s;
+        transition-delay: 0.2s;
+    }
+}
+
