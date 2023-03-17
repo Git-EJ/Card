@@ -91,7 +91,8 @@ label {
   overflow: hidden;
 }
 .card:hover {
-  box-shadow: 0 0 14px rgba(255, 121, 218, 0.705), 7px 7px 7px rgba(147, 86, 220, 0.267);
+  box-shadow: 2px 7px 7px rgba(0, 0, 0, 0.18);
+  transform: scale(1.01);
 }
 .card:hover .card_left {
   width: 65%;
@@ -117,27 +118,37 @@ label {
 }
 
 .dish_check:checked ~ .card .fa-circle-check {
-  animation-name: card_checked;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
+  animation: card_checked 2s cubic-bezier(1, 0.31, 0.4, 0.2) forwards;
   color: #9356DC;
   background: linear-gradient(170deg, #FF79DA, #9356DC);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  transform: rotateZ(360deg);
-  left: 12.5px;
   width: 45px;
   height: 45px;
+  left: 12.5px;
+  transform: rotateZ(360deg);
 }
 @keyframes card_checked {
-  from {
-    font-size: 1.9rem;
-    transform: scale(0.1) rotateY(0);
+  0% {
+    transform: translateY(0px) rotateY(0);
   }
-  to {
+  10% {
+    transform: translateY(10px) rotateY(0);
+  }
+  40% {
+    transform: translateY(-45px) rotateY(1080deg);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  51% {
+    font-size: 1.9rem;
+    transform: scale(0.1);
+  }
+  100% {
     font-size: 2.5rem;
-    transform: scale(1) rotateY(1080deg);
+    transform: scale(1);
   }
 }
 
@@ -153,7 +164,7 @@ label {
   height: 100%;
   padding: 0.8rem 0 0.8rem 0.6rem;
   white-space: nowrap;
-  transition: width 2s cubic-bezier(0.2, 0.5, 0.3, 1.5);
+  transition: width 1.5s cubic-bezier(0.2, 0.5, 0.3, 1.5);
 }
 .card_left_top_dish_name {
   width: 100%;
@@ -189,7 +200,7 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 2s cubic-bezier(0.2, 0.5, 0.3, 1.5);
+  transition: transform 1.5s cubic-bezier(0.2, 0.5, 0.3, 1.5);
 }
 .test .fa-circle-check {
   display: flex;
@@ -201,7 +212,7 @@ label {
   left: 19.5px;
   font-size: 1.9rem;
   color: #fff;
-  transition: transform 2s;
+  transition: transform 1.5s;
   transition-delay: 0.2s;
 }
 

@@ -1,8 +1,8 @@
 
 /* Don't need animation.scss - Transition only*/
 
-
 $card_height:70px;
+$anim_duration:1.5s;
 
 .cards {
     width: 100%;
@@ -31,7 +31,9 @@ label{
     overflow: hidden;
     
     &:hover{
-        box-shadow: $box-shadow_gradient;
+        // box-shadow: $box-shadow_gradient;
+        box-shadow: $box-shadow-hover;
+        transform: scale(1.01);
     }
 
     &:hover .card_left{
@@ -63,10 +65,10 @@ label{
 .dish_check:checked~.card .fa-circle-check{
     @include card_checked;
     @include linear_gradient_icons;
-    transform: rotateZ(360deg);
-    left:calc(($card_height - 45px) / 2);
     width:45px;
     height:45px;
+    left:calc(($card_height - 45px) / 2);
+    transform: rotateZ(360deg) ;
  }
 
 // .dish_check:not(:checked)~.card .card_left:hover{
@@ -86,7 +88,7 @@ label{
     height: 100%;
     padding: 0.8rem 0 0.8rem 0.6rem;
     white-space: nowrap;
-    transition: width 2s cubic-bezier(0.2, 0.5, 0.3, 1.5); // si dans le &:hover pas de retour fluide
+    transition: width $anim_duration cubic-bezier(0.2, 0.5, 0.3, 1.5); // si dans le &:hover pas de retour fluide
 
         &_top_dish_name {
         width:100%;
@@ -122,7 +124,7 @@ label{
     right:-100px;
     background: $tertiary_color;
     @include flex_center;
-    transition: transform 2s cubic-bezier(0.2, 0.5, 0.3, 1.5); 
+    transition: transform $anim_duration cubic-bezier(0.2, 0.5, 0.3, 1.5); 
 
     .fa-circle-check{
         @include flex_center;
@@ -132,7 +134,7 @@ label{
         left:calc(($card_height - 31px) / 2);
         font-size:1.9rem;
         color:#fff;
-        transition: transform 2s;
+        transition: transform $anim_duration;
         transition-delay: 0.2s;
     }
 }

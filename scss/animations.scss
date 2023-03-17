@@ -1,110 +1,32 @@
-@mixin hover_animation_card{
-
-    .test,
-    .card_left,
-    .fa-circle-check,
-    .card_right_dish_price {
-        // animation-duration: 5s;
-        animation-duration: 2s;
-        animation-fill-mode: forwards;
-        transform-origin: right;
-    }   
-
-    .card_right_dish_price{
-        animation-name:card_right_dish_price_animation;
-
-        @keyframes card_right_dish_price_animation{
-            0%{
-                transform: translateX(1.5rem);
-            }
-
-            60%{
-                // transform: translateX(0.6rem); //  1.5rem / 100% = 0.15rem * 10% --> 60% = 0.15rem * 4  (0=100% 1=90% ... 4=60%)
-            }
-
-            100% {
-                transform: translateX(0px);
-            }
-        }
-    }
-    
-    .test {
-        animation-name: test_animation;
-        
-        @keyframes test_animation {
-            0% {
-                transform: translateX(1.5rem);
-                width: 0%;
-                padding-left:1.5rem;
-            }
-            
-            60% {
-                // transform: translateX(0.6rem);
-                width: 22%; // khalid--> cubic bezier pour depassement
-            }
-            
-            100% {
-                transform: translateX(0px);
-                width: 20%;
-                padding-left: 0px;
-            }
-        }
-    }
-    
-    .card_left {
-        animation-name: card_left_width;
-        
-        @keyframes card_left_width {
-            
-            0%{
-                width:85%;
-            }
-            
-            60%{
-                width: calc(100% - (22% + 15%));
-            }
-            
-            100%{
-                width:65%;
-            }
-        }
-    }
-    
-    .fa-circle-check{
-        animation-name: icon_rotation;
-        display: inline-block;
-        transform-origin: center; //50% 50% --> X Y
-
-        @keyframes icon_rotation {
-            
-            0% {
-                transform: rotateZ(0deg);
-            }
-
-
-            100%{
-                transform: rotateZ(360deg);
-            }
-        }
-    }
-}
-
-
-
 @mixin card_checked{
-    animation-name: card_checked;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+    animation: card_checked 2s cubic-bezier(1,.31,.4,.2) forwards;
 
     @keyframes card_checked {
-        from{
-            font-size: 1.9rem;
-            transform: scale(0.1) rotateY(0);
+
+        0%{
+            transform: translateY(0px) rotateY(0);
         }
 
-        to{
+        10%{
+            transform: translateY(10px) rotateY(0);
+        }
+
+        40%{
+            transform: translateY(-45px) rotateY(1080deg);
+        }
+
+        50%{
+            transform: translateY(0px);
+        }
+
+        51%{
+            font-size: 1.9rem;
+            transform: scale(0.1) ;
+        }
+
+        100%{
             font-size:2.5rem;
-            transform: scale(1) rotateY(1080deg);
+            transform: scale(1) ;
         }
     }
 }
